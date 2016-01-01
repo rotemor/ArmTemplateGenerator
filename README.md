@@ -8,5 +8,9 @@ This is a very first setp for a full ARM template generator with UI and maybe de
 
 At the moment I’m just spitting out JSON Arm template based on Class Model I’m creating 
 
-Any help is welcome :)
+### Any help is welcome :)
+
+[RotemOr](http://www.cloudfighter.com)
+
+
 
