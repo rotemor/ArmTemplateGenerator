@@ -14,7 +14,7 @@ namespace ArmTemplate
         static void Main(string[] args)
         {
           
-            var main = new Main();
+            var main = new Template();
             var param = new Parameter {
                 type = "string",
                 Name = "storageName",

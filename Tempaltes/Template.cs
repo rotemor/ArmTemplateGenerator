@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace ArmTemplate.Tempaltes
 {
-    public class Main : IJson
+    public class Template : IJson
     {
-        public Main()
+        public Template()
         {
             Parameters = new List<Parameter>();
             Variabels = new List<Variabe>();
