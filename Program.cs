@@ -1,4 +1,4 @@
-﻿using ArmTemplate.Tempaltes;
+﻿using ArmTemplate.Templates;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,8 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.IO;
-using ArmTemplate.Tempaltes;
-using ArmTemplate.Tempaltes.Resources.Properties;
+using ArmTemplate.Templates;
+using ArmTemplate.Templates.enums;
+using ArmTemplate.Templates.Parameters;
+using ArmTemplate.Templates.Resources;
+using ArmTemplate.Templates.Resources.Properties;
 using Newtonsoft.Json.Linq;
 
 namespace ArmTemplate
@@ -16,58 +19,52 @@ namespace ArmTemplate
     {
         static void Main(string[] args)
         {
-          
+            var arm = new Templates.ArmTemplate();
            
-            var param = new Parameter {
+            var storageAccountName = new Parameter {
                 type = "string",
-                Name = "storageAccountName",
-                defaultValue = "",
                 metadata = new metadata { description = "Give your storage account a name "},
             };
 
-           // var s = prop.ToJson();
-            Template.Parameters.Add(param.Name, param);
-
-            param = new Parameter
+            var storageAccountType = new Parameter
             {
                 type = "string",
-                Name = "location",
-                defaultValue = "North",
+                defaultValue = "Standard_LRS",
+                allowedValues = new List<dynamic> { "Standard_LRS", "Standard_GRS", "Standard_ZRS" },
+                metadata = new metadata { description = "Storage Account type" },
+            };
 
-                allowedValues = new List<string> { "North", "West", "East" },
-        
+            var location = new Parameter
+            {
+                type = "string",
+                defaultValue = "North",
+                allowedValues = new List<dynamic> { "North", "West", "East" },
                 metadata = new metadata { description = "your datacenter location " },
             };
-            Template.Parameters.Add(param.Name,param);
 
-            var varbl = new Variabe();
-            varbl.Name = "MaxSize";
-            varbl.Value = 100;
 
-            Template.Variabels.Add(varbl.Name,varbl);
+            arm.template["parameters"].Add("storageAccountName", storageAccountName);
+            arm.template["parameters"].Add("storageAccountType", storageAccountType);
+            arm.template["parameters"].Add("location", location);
+            arm.template["variabels"].Add( "MaxSize", 100);
 
-            var resource = new Resource(ResourceConstatnts.StorageAccounts);
-            resource.name = "[variables('storageAccountName')]";
-            resource.location = "[variables('location')]";
-            resource.apiVersion = "[variables('apiVersion')]";
-            resource.properties = new StorageAccount();
-            Template.Resources.Add(resource);
+            var resource = new Resource(ResourceType.StorageAccounts)
+            {
+                name = "[variables('storageAccountName')]",
+                location = "[variables('location')]",
+                apiVersion = "[variables('apiVersion')]",
+                properties = new StorageAccount("[parameters('storageAccountType')]")
+            };
+            arm.template["resources"].Add(resource);
 
-            var armTemplate = Template.ToJson();
 
-            Console.WriteLine(armTemplate);
 
-            //File.WriteAllText("jsonoutput.json",json.ToString());
-            Console.WriteLine("Done:)");
 
-            var dictionary = new Dictionary<string, StorageAccount>();
-            dictionary.Add("abc", new StorageAccount());
-            dictionary.Add("eee", new StorageAccount());
-            dictionary.Add("awewerbc", new StorageAccount());
-            dictionary.Add("wertr", new StorageAccount());
-            dictionary.Add("ghghjghj", new StorageAccount());
+            var settings = new JsonSerializerSettings();
+            settings.NullValueHandling = NullValueHandling.Ignore;
 
-            var test = JsonConvert.SerializeObject(dictionary);
+            var test = JsonConvert.SerializeObject(arm.template,settings);
+            File.WriteAllText("jsonoutput.json", test);
             Console.WriteLine(test);
 
             Console.ReadKey();
