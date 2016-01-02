@@ -6,6 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.IO;
+using ArmTemplate.Tempaltes;
+using ArmTemplate.Tempaltes.Resources.Properties;
+using Newtonsoft.Json.Linq;
 
 namespace ArmTemplate
 {
@@ -14,16 +17,16 @@ namespace ArmTemplate
         static void Main(string[] args)
         {
           
-            var main = new Template();
+           
             var param = new Parameter {
                 type = "string",
-                Name = "storageName",
+                Name = "storageAccountName",
                 defaultValue = "",
                 metadata = new metadata { description = "Give your storage account a name "},
             };
 
            // var s = prop.ToJson();
-            main.Parameters.Add(param);
+            Template.Parameters.Add(param.Name, param);
 
             param = new Parameter
             {
@@ -35,21 +38,40 @@ namespace ArmTemplate
         
                 metadata = new metadata { description = "your datacenter location " },
             };
-            main.Parameters.Add(param);
+            Template.Parameters.Add(param.Name,param);
 
             var varbl = new Variabe();
             varbl.Name = "MaxSize";
             varbl.Value = 100;
 
-            main.Variabels.Add(varbl);
+            Template.Variabels.Add(varbl.Name,varbl);
 
-            var armTemplate = main.ToJson();
+            var resource = new Resource(ResourceConstatnts.StorageAccounts);
+            resource.name = "[variables('storageAccountName')]";
+            resource.location = "[variables('location')]";
+            resource.apiVersion = "[variables('apiVersion')]";
+            resource.properties = new StorageAccount();
+            Template.Resources.Add(resource);
+
+            var armTemplate = Template.ToJson();
 
             Console.WriteLine(armTemplate);
 
             //File.WriteAllText("jsonoutput.json",json.ToString());
             Console.WriteLine("Done:)");
+
+            var dictionary = new Dictionary<string, StorageAccount>();
+            dictionary.Add("abc", new StorageAccount());
+            dictionary.Add("eee", new StorageAccount());
+            dictionary.Add("awewerbc", new StorageAccount());
+            dictionary.Add("wertr", new StorageAccount());
+            dictionary.Add("ghghjghj", new StorageAccount());
+
+            var test = JsonConvert.SerializeObject(dictionary);
+            Console.WriteLine(test);
+
             Console.ReadKey();
+
         }
     }
 }

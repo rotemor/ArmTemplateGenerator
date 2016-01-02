@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ArmTemplate.Tempaltes.Resources.Properties;
 
 namespace ArmTemplate.Tempaltes
 {
-    public enum ResourceType
+    public static class ResourceConstatnts
     {
-        A,
-        B
+         public const string StorageAccounts = "Microsoft.Storage/storageAccounts";
+         public const string PublicIPAddresses = "Microsoft.Network/publicIPAddresses";
     }
+
 }

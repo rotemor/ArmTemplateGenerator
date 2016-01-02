@@ -13,8 +13,8 @@ namespace ArmTemplate.Tempaltes
        
            
        
-        public static List<Parameter> Parameters = new List<Parameter>();
-        public static List<Variabe> Variabels = new List<Variabe>();
+        public static Dictionary<string ,Parameter> Parameters = new Dictionary<string ,Parameter>();
+        public static Dictionary<string, Variabe> Variabels = new Dictionary<string, Variabe>();
         public static List<Resource> Resources =  new List<Resource>();
 
         public static string ToJson()
@@ -47,36 +47,59 @@ namespace ArmTemplate.Tempaltes
         {
             var template = "\"variables\" : {\n";
             var varCount = Variabels.Count();
-            for (int i = 0; i < varCount; i++)
+           
+            var count = 0;
+            foreach (var key in Variabels.Keys)
             {
-                if (i == varCount)
-                    template += Variabels[i].ToJson();
+                if (count != varCount)
+                    template += Variabels[key].ToJson() + ",\n";
                 else
-                    template += Variabels[i].ToJson() + ",\n";
+
+                    template += Variabels[key].ToJson();
             }
 
-            template += "}";
+            template += "},";
             return template;
         }
 
         public static string geResources()
         {
-           
-            return "";
+
+            var template = "\"resources\" : [\n";
+            var resCount = Resources.Count();
+
+            for (int i = 0; i < resCount; i++)
+            {
+                if (i != resCount)
+                    template += Resources[i].ToJson() + ",\n";
+                else
+                    // the end of the list
+                    template += Resources[i].ToJson() + "}\n";
+            }
+
+            template += "]";
+            return template;
+
         }
+
+
+
         public static string getParameters() {
             var res = "\n" + "\"parameters\" : {\n";
             var paramCount = Parameters.Count();
-            for (int i = 0; i < paramCount; i++)
+            var count = 0;
+            foreach (var key in Parameters.Keys)
             {
-                if (i == paramCount)
-                    res += Parameters[i].ToJson();
+                if (count != paramCount)
+                    res += Parameters[key].ToJson() + ",\n";
                 else
-                    res += Parameters[i].ToJson() + ",\n";
-            }
-            res += "},\n";
+                    // the end of the list
+                    res += Parameters[key].ToJson() + "},\n"; 
 
-            return res;
+                count++;
+            }
+
+           return res;
         }
     }
 

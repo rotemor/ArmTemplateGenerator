@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ArmTemplate.Tempaltes
 {
-    public class Parameter
+    public class Parameter : IJson
     {
         public string Name { get; set; }
         public string type  { get; set; }
@@ -18,7 +18,17 @@ namespace ArmTemplate.Tempaltes
 
         public metadata metadata { get; set; }
 
+
         public string ToJson()
+        {
+            var param = ToJObject();
+            var obj = param.ToString();
+            var jsonObj = "\"" + Name + "\":" + obj;
+            return jsonObj;
+
+        }
+
+        public JObject ToJObject()
         {
             dynamic param = new JObject();
             param.type = type;
@@ -33,12 +43,9 @@ namespace ArmTemplate.Tempaltes
                 param.allowedValues += "]";
                 //param.allowedValues = allowedValues.ToArray<string>().ToString();
             }
-            param.metadata = metadata.ToJson();
+            param.metadata = metadata.ToJObject();
 
-            var obj = param.ToString();
-            var jsonObj = "\"" + Name + "\":" + obj;
-            return jsonObj;
-
+            return param;
         }
     }
     

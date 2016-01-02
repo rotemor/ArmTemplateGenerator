@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using Newtonsoft.Json.Linq;
 
 namespace ArmTemplate.Tempaltes
 {
@@ -9,8 +10,16 @@ namespace ArmTemplate.Tempaltes
 
         public string ToJson()
         {
-            var res = JsonConvert.SerializeObject(this);
-            return res;
+            var jobj = ToJObject();
+
+            return jobj.ToString();
+        }
+
+        public JObject ToJObject()
+        {
+            dynamic jobj = new JObject();
+            jobj.description = description;
+            return jobj;
         }
     }
 }
