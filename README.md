@@ -6,9 +6,11 @@ So im starting this Project to visualize and simplify building those templates
  
 This is a very first setp for a full ARM template generator with UI and maybe deployment 
 
-At the moment I’m just spitting out JSON Arm template based on Class Model I’m creating 
+At the moment Iâ€™m just spitting out JSON Arm template based on Class Model Iâ€™m creating 
 
-### Any help is welcome :)
+### Any help is welcome 
+>-(-:{}
+
 
 [RotemOr](http://www.cloudfighter.com)
 
