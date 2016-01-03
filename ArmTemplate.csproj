@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Templates\Resources\Network\DnsSettings.cs" />
     <Compile Include="Templates\Resources\Network\IpAddress.cs" />
     <Compile Include="Templates\Resources\Network\VirtualNetwork.cs" />
     <Compile Include="Templates\Resources\Storage\StorageAccount.cs" />
