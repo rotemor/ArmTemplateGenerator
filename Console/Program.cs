@@ -53,16 +53,16 @@ namespace Console
 
 
             // Add Parameters
-            arm.template["parameters"].Add("storageAccountName", storageAccountName);
-            arm.template["parameters"].Add("dnsLabelPrefix", dnsLabelPrefix);
+            arm.AddParameter("storageAccountName", storageAccountName);
+            arm.AddParameter("dnsLabelPrefix", dnsLabelPrefix);
 
 
             // Add Variables
-            arm.template["variabels"].Add("location", "[resourceGroup().location]");
-            arm.template["variabels"].Add("storageAccountName", "[concat(uniquestring(resourceGroup().id), 'storage')]");
-            arm.template["variabels"].Add("publicIPAddressName", "[concat('myPublicIp', uniquestring(resourceGroup().id))]");
-            arm.template["variabels"].Add("publicIPAddressType", "Dynamic");
-            arm.template["variabels"].Add("apiVersion", "2015-06-15");
+            arm.AddVariable("location", "[resourceGroup().location]");
+            arm.AddVariable("storageAccountName", "[concat(uniquestring(resourceGroup().id), 'storage')]");
+            arm.AddVariable("publicIPAddressName", "[concat('myPublicIp', uniquestring(resourceGroup().id))]");
+            arm.AddVariable("publicIPAddressType", "Dynamic");
+            arm.AddVariable("apiVersion", "2015-06-15");
 
             var storageResource = new Resource(ResourceType.StorageAccounts)
             {
@@ -86,8 +86,8 @@ namespace Console
                     }
                 }
             };
-            arm.template["resources"].Add(storageResource);
-            arm.template["resources"].Add(ipAddressResource);
+            arm.AddResource(storageResource);
+            arm.AddResource(ipAddressResource);
             return arm;
         }
     }
