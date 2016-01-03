@@ -1,13 +1,7 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ArmTemlateEngine.Templates.Resources;
+﻿using System.Collections.Generic;
+using ArmTemlateEngine.Engine.Resources;
 
-namespace ArmTemplate.Templates
+namespace ArmTemlateEngine.Engine
 {
     public class ArmTemplate
     {

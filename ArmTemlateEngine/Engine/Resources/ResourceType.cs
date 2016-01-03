@@ -1,4 +1,4 @@
-﻿namespace ArmTemlateEngine.Templates.Resources
+﻿namespace ArmTemlateEngine.Engine.Resources
 {
     public static class ResourceType
     {

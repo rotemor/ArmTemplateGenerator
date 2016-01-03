@@ -1,6 +1,6 @@
-﻿namespace ArmTemlateEngine.Templates.Resources.Network
+﻿namespace ArmTemlateEngine.Engine.Resources.Network
 {
-    class IpAddress
+    public class IpAddress
     {
         public string publicIPAllocationMethod { get; set; }
         public DnsSettings dnsSettings { get; set; }

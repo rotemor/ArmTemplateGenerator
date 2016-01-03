@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ArmTemlateEngine.Templates.Resources.Network
+namespace ArmTemlateEngine.Engine.Resources.Network
 {
    
 

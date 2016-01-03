@@ -45,15 +45,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Templates\ArmTemplate.cs" />
-    <Compile Include="Templates\Parameters\metadata.cs" />
-    <Compile Include="Templates\Parameters\Parameter.cs" />
-    <Compile Include="Templates\Resources\Network\DnsSettings.cs" />
-    <Compile Include="Templates\Resources\Network\IpAddress.cs" />
-    <Compile Include="Templates\Resources\Network\VirtualNetwork.cs" />
-    <Compile Include="Templates\Resources\Resource.cs" />
-    <Compile Include="Templates\Resources\ResourceType.cs" />
-    <Compile Include="Templates\Resources\Storage\StorageAccount.cs" />
+    <Compile Include="Engine\ArmTemplate.cs" />
+    <Compile Include="Engine\Parameters\metadata.cs" />
+    <Compile Include="Engine\Parameters\Parameter.cs" />
+    <Compile Include="Engine\Resources\Network\DnsSettings.cs" />
+    <Compile Include="Engine\Resources\Network\IpAddress.cs" />
+    <Compile Include="Engine\Resources\Network\VirtualNetwork.cs" />
+    <Compile Include="Engine\Resources\Resource.cs" />
+    <Compile Include="Engine\Resources\ResourceType.cs" />
+    <Compile Include="Engine\Resources\Storage\StorageAccount.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

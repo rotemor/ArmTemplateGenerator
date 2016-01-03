@@ -1,4 +1,4 @@
-﻿namespace ArmTemlateEngine.Templates.Resources.Storage
+﻿namespace ArmTemlateEngine.Engine.Resources.Storage
 {
     public class StorageAccount
     {

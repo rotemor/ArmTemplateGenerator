@@ -1,4 +1,4 @@
-﻿namespace ArmTemlateEngine.Templates.Parameters
+﻿namespace ArmTemlateEngine.Engine.Parameters
 {
     public class metadata
     {

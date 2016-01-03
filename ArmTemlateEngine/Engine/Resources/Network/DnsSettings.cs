@@ -1,4 +1,4 @@
-﻿namespace ArmTemlateEngine.Templates.Resources.Network
+﻿namespace ArmTemlateEngine.Engine.Resources.Network
 {
     public class DnsSettings
     {
