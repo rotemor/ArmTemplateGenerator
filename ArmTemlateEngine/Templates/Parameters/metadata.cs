@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json.Linq;
-
-namespace ArmTemplate.Templates.Parameters
+﻿namespace ArmTemlateEngine.Templates.Parameters
 {
     public class metadata
     {

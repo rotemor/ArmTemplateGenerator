@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json.Linq;
-
-namespace ArmTemplate.Templates.Resources
+﻿namespace ArmTemlateEngine.Templates.Resources
 {
     public class Resource 
     {

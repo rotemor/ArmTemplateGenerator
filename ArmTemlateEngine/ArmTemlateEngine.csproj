@@ -4,17 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E3C8DD16-FB76-4A68-A19E-1D842F95DEA4}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{4395ED3E-BCE4-4000-BD07-0FA5777E99BF}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ArmTemplate</RootNamespace>
-    <AssemblyName>ArmTemplate</AssemblyName>
+    <RootNamespace>ArmTemlateEngine</RootNamespace>
+    <AssemblyName>ArmTemlateEngine</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -33,8 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -47,25 +44,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Templates\Resources\Network\DnsSettings.cs" />
-    <Compile Include="Templates\Resources\Network\IpAddress.cs" />
-    <Compile Include="Templates\Resources\Network\VirtualNetwork.cs" />
-    <Compile Include="Templates\Resources\Storage\StorageAccount.cs" />
     <Compile Include="Templates\ArmTemplate.cs" />
     <Compile Include="Templates\Parameters\metadata.cs" />
     <Compile Include="Templates\Parameters\Parameter.cs" />
+    <Compile Include="Templates\Resources\Network\DnsSettings.cs" />
+    <Compile Include="Templates\Resources\Network\IpAddress.cs" />
+    <Compile Include="Templates\Resources\Network\VirtualNetwork.cs" />
     <Compile Include="Templates\Resources\Resource.cs" />
     <Compile Include="Templates\Resources\ResourceType.cs" />
+    <Compile Include="Templates\Resources\Storage\StorageAccount.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="packages.config" />
-    <None Include="Test.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include=".gitignore" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,17 +1,11 @@
-﻿using ArmTemplate.Templates;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.IO;
-using ArmTemplate.Templates;
-using ArmTemplate.Templates.enums;
-using ArmTemplate.Templates.Parameters;
-using ArmTemplate.Templates.Resources;
-using ArmTemplate.Templates.Resources.Properties;
-using Newtonsoft.Json.Linq;
+using ArmTemlateEngine.Templates.Parameters;
+using ArmTemlateEngine.Templates.Resources;
+using ArmTemlateEngine.Templates.Resources.Storage;
+
 
 namespace ArmTemplate
 {
