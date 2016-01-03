@@ -49,7 +49,9 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Templates\Resources\Properties\StorageAccount.cs" />
+    <Compile Include="Templates\Resources\Network\IpAddress.cs" />
+    <Compile Include="Templates\Resources\Network\VirtualNetwork.cs" />
+    <Compile Include="Templates\Resources\Storage\StorageAccount.cs" />
     <Compile Include="Templates\ArmTemplate.cs" />
     <Compile Include="Templates\Parameters\metadata.cs" />
     <Compile Include="Templates\Parameters\Parameter.cs" />

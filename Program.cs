@@ -60,14 +60,17 @@ namespace ArmTemplate
 
 
 
-            var settings = new JsonSerializerSettings();
-            settings.NullValueHandling = NullValueHandling.Ignore;
+            var settings = new JsonSerializerSettings
+            {
+                NullValueHandling = NullValueHandling.Ignore,
+                Formatting = Formatting.Indented
+            };
 
             var test = JsonConvert.SerializeObject(arm.template,settings);
             File.WriteAllText("jsonoutput.json", test);
             Console.WriteLine(test);
 
-            Console.ReadKey();
+            Console.ReadLine()  ;
 
         }
     }
